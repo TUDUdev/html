@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>cricket</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        button{
+            font-size: 15px;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>Bat, Ball and Stump Game</h1>
+<button onclick="
+ let ComputerChoice = repeat();
+ let Result = getResult('Bat' , ComputerChoice);
+ showResult('Bat' , ComputerChoice , Result);
+ ">bat</button>
+
+<button onclick="
+ComputerChoice = repeat(); 
+Result = getResult('Ball' , ComputerChoice);
+showResult('Ball' , ComputerChoice , Result);
+"
+>  
+    ball</button>
+
+<button onclick="
+ComputerChoice = repeat();
+Result = getResult('Stump' , ComputerChoice);
+showResult('Stump' , ComputerChoice , Result);
+
+">
+    stump</button>
+
+
+
+<script>
+
+let scoreStr = localStorage.getItem('Score');
+let score = JSON.parse(scoreStr) || 
+{
+   Win : 0,
+   Lose : 0 ,
+   Tie : 0 ,
+}; 
+
+   score.displayScore = function()
+   {
+     return `Win: ${score.Win}, Lose: ${score.Lose}, Tie: ${score.Tie}`;
+   };
+
+  function repeat() {
+ let RandomNumber = Math.random() * 3;
+ if(RandomNumber>0 && RandomNumber<=1)
+ {
+    return 'Bat'; 
+ }
+ else if(RandomNumber>1 && RandomNumber<=2)
+ {
+    return 'Ball';
+ }
+ else
+ {
+    return 'Stump';
+ }
+ }
+
+ function getResult(userMove , computerMove){
+   if(userMove === 'Bat')  //User Choice is Bat
+   {
+      if(computerMove === 'Bat')
+    {
+      score.Tie++;
+      return `It's a Tie`;
+    }
+     else if(computerMove === 'Ball')
+    { 
+      score.Win++;
+    return `It's a User Win`;
+    }
+    else if(computerMove === 'Stump')
+    {
+      score.Lose++;
+    return `It's a Computer Win`;
+    } 
+    }
+
+   else if(userMove === 'Ball')  //User Choice is Ball
+   {
+      if(computerMove === 'Bat')
+{
+   score.Lose++;
+  return `It's a Computer Win`;
+}
+else if(computerMove === 'Ball')
+{
+   score.Tie++;
+   return `It's a Tie`;
+}
+else if(computerMove === 'Stump')
+{
+   score.Win++;
+   return `It's a User Win`;
+}
+   }
+
+   else{                            //User Choice is Stump
+      if(computerMove === 'Bat')
+{
+   score.Win++;
+  return `It's a User Win`;
+}
+else if(computerMove === 'Ball')
+{
+   score.Lose++;
+   return `It's a Computer Win`;
+}
+else if(computerMove === 'Stump')
+{
+   score.Tie++;
+   return `It's a Tie`;
+}
+   }
+ }
+
+ function showResult(userMove , computerMove , Result)
+ {
+   localStorage.setItem( 'Score' , JSON.stringify(score));
+   alert(`  User Choice is ${userMove}. Computer Choice is ${computerMove}
+   
+   ${Result}
+
+   ${score.displayScore()}`);
+ }
+
+ 
+
+ 
+</script>    
+
+    
+    
+</body>
+</html>

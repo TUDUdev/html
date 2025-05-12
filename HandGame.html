@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hand Game</title>
+    <link rel="stylesheet" href="HandGame.css">
+</head>
+<body>
+    <h1>HAND Game</h1>
+    <div class="game">
+
+<img class="hand" src="/Project/Resources/Hand Game/stone.png" alt="Stone"
+    onclick="
+    ComputerChoice = repeat();
+    let Result = getResult('Stone' , ComputerChoice);
+    showResult('Stone' , ComputerChoice , Result)
+    ">
+
+<img class="hand" src="/Project/Resources/Hand Game/paper.png" alt="Paper"
+onclick="
+ComputerChoice = repeat();
+Result = getResult('Paper' , ComputerChoice);
+showResult('Paper' , ComputerChoice , Result)
+">
+
+<img class="hand" src="/Project/Resources/Hand Game/scissor.png" alt="Scissor"
+onclick="
+ComputerChoice = repeat();
+Result = getResult('Scissor' , ComputerChoice);
+showResult('Scissor' , ComputerChoice , Result)
+">
+
+<img class="hand" src="/Project/Resources/Hand Game/thread.png" alt="Thread"
+onclick="
+ComputerChoice = repeat();
+Result = getResult('Thread' , ComputerChoice);
+showResult('Thread' , ComputerChoice , Result)
+">
+</div>
+
+<h3>Result:</h3>
+<p id="result" style="color: white;"></p>
+   
+</body>
+   <script>
+    function repeat()
+{
+let ComputerChoice = Math.random() * 4;
+if(ComputerChoice>0 && ComputerChoice<=1)
+{
+return 'Stone';
+}
+else if(ComputerChoice>1 && ComputerChoice<=2)
+{
+return 'Paper' ;
+}
+else if(ComputerChoice>2 && ComputerChoice<=3)
+{
+return 'Scissor' ;
+}
+else if(ComputerChoice>3 && ComputerChoice<=4)
+{
+return 'Thread' ;
+}
+}
+
+function getResult( UserMove , ComputerMove)
+{
+if(UserMove === 'Stone') //UserMove
+{
+if(ComputerMove === 'Stone')
+{
+return 'Its a Tie' ;
+}
+else if(ComputerMove === 'Paper')
+{
+return 'Computer Win' ;
+}
+else if(ComputerMove === 'Scissor')
+{
+return 'User Win' ;
+}
+else if(ComputerMove === 'Thread')
+{
+return 'Computer Win' ;
+}
+}
+else if(UserMove === 'Paper') //UserMove
+{
+if(ComputerMove === 'Stone')
+{
+return 'User Win' ;
+}
+else if(ComputerMove === 'Paper')
+{
+return 'Tie' ;
+}
+else if(ComputerMove === 'Scissor')
+{
+return 'Computer Win' ;
+}
+else if(ComputerMove === 'Thread')
+{
+return 'Computer Win' ;
+}
+}
+else if(UserMove === 'Scissor') //UserMove
+{
+if(ComputerMove === 'Stone')
+{
+return 'Computer Tie' ;
+}
+else if(ComputerMove === 'Paper')
+{
+return 'User Win' ;
+}
+else if(ComputerMove === 'Scissor')
+{
+return 'Tin' ;
+}
+else if(ComputerMove === 'Thread')
+{
+return 'User Win' ;
+}
+}
+else(UserMove === 'Thread')
+{
+if(ComputerMove === 'Stone')
+{
+return 'User Tie' ;
+}
+else if(ComputerMove === 'Paper')
+{
+return 'User Win' ;
+}
+else if(ComputerMove === 'Scissor')
+{
+return 'Computer Win' ;
+}
+else if(ComputerMove === 'Thread')
+{
+return 'Tie' ;
+}
+}
+}
+
+/*function showResult(UserMove , ComputerMove , Result)
+{
+alert(`
+}User Choice is ${UserMove}\nComputer Choice is ${ComputerMove}\n${Result}`);
+
+}*/
+
+function showResult(UserMove , ComputerMove , Result){
+document.getElementById('result').textContent = `User Choice is ${UserMove}. Computer Choice is ${ComputerMove}. ${Result}.`;
+}
+   </script>
+</html>

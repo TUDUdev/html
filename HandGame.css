@@ -1,0 +1,34 @@
+body{
+    background: linear-gradient(blue);
+}
+
+h1{
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    text-decoration-line: underline;
+    text-decoration-color: white;
+}
+
+.game
+{
+    display: flex;
+    justify-content: center;
+}
+
+.hand{
+    opacity: 0.2;
+}
+
+.hand:hover{
+    opacity: 1;
+}
+
+.hand:active{
+    opacity: 0;
+}
+
+h3{
+    color: rgb(199, 192, 192);
+}
